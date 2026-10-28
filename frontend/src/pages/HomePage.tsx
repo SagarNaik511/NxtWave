@@ -3,11 +3,14 @@ import {
   Activity,
   ArrowDown,
   ArrowRight,
+  Braces,
   Check,
   CircleHelp,
   Code2,
+  GitBranch,
   Layers3,
   Sparkles,
+  Terminal,
   WandSparkles,
   Workflow,
   Zap,
@@ -58,6 +61,19 @@ export function HomePage() {
             <p>One focused online workshop to move from “I want to build something” to a real first project direction.</p>
             <div className="cloudwave-actions"><Link className="cloudwave-button cloudwave-button-primary" to="/register">Reserve your spot <ArrowRight size={16} aria-hidden="true" /></Link><a className="cloudwave-button cloudwave-button-ghost" href="#workshop">Explore the sprint <ArrowDown size={16} aria-hidden="true" /></a></div>
             <div className="cloudwave-facts"><span>ONLINE</span><span>FREE TO ATTEND</span><span>BEGINNER FRIENDLY</span></div>
+          </div>
+
+          <div className="pro-code-visual" aria-label="Illustrated coding workspace">
+            <div className="pro-code-window-bar"><span className="pro-code-dots" aria-hidden="true"><i /><i /><i /></span><span><Terminal size={14} aria-hidden="true" /> ai-sprint / build-01</span><span>ONLINE</span></div>
+            <div className="pro-code-window">
+              <div className="pro-code-line"><span>01</span><b className="code-keyword">const</b> project = <b className="code-string">&quot;first-ai-project&quot;</b></div>
+              <div className="pro-code-line"><span>02</span><b className="code-keyword">const</b> goal = <b className="code-string">&quot;learn by building&quot;</b></div>
+              <div className="pro-code-line"><span>03</span><b className="code-keyword">const</b> sprint = <b className="code-function">start</b>(project)</div>
+              <div className="pro-code-line pro-code-comment"><span>04</span>// make something useful</div>
+              <div className="pro-code-line"><span>05</span><b className="code-function">ship</b>(sprint)<strong className="pro-code-cursor">_</strong></div>
+            </div>
+            <div className="pro-code-mascot" aria-hidden="true"><div className="pro-code-antenna" /><div className="pro-code-face"><i /><i /></div><div className="pro-code-body"><Braces size={28} strokeWidth={2} /></div><div className="pro-code-arm pro-code-arm-left" /><div className="pro-code-arm pro-code-arm-right" /></div>
+            <div className="pro-code-sticker"><GitBranch size={14} aria-hidden="true" /> BUILD / SHARE / BEGIN</div>
           </div>
 
         </div>

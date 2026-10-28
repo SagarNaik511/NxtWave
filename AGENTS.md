@@ -190,3 +190,9 @@ The project is tracked in Git on the `main` branch. PostgreSQL/cloud deployment 
 - The theme is implemented as a final CSS variable and selector layer so older palette rules cannot override the active public shell.
 - The public home composition now uses a full-bleed sky hero, overlay navigation, stacked oversized display headline, layered CSS cloud artwork, poster-style workshop visual, metadata rails, editorial module cards, and a matching closing CTA. This preserves the supplied reference's visual structure without copying its content.
 - The hero was subsequently simplified for readability: the decorative poster/AI graphic was removed, the headline is the sole focal element with high-contrast navy treatment, and supporting navigation/body text was increased in size.
+
+## Professional coding visual direction
+
+- The active visual layer is now `frontend/src/styles/professional-theme.css`, imported after `global.css`.
+- Public, registration, and dashboard surfaces use a professional black/graphite and green system with larger type, stronger contrast, readable body copy, code-terminal styling, and a small CSS-built coding mascot in the home hero.
+- The hero code illustration is decorative only. It does not fabricate workshop metrics or change any product behavior.
