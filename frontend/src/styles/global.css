@@ -760,3 +760,44 @@ body::before { background: radial-gradient(circle at 50% -8%, rgba(255, 255, 255
 .dashboard-intro h1, .dashboard-auth-copy h1 { color: var(--color-text); font-family: var(--font-pixel); }.dashboard-intro p, .dashboard-auth-copy p { color: var(--color-muted); font-size: 0.7rem; }.dashboard-eyebrow { color: #4f8a72; }.dashboard-refresh-button { border-color: rgba(79, 138, 114, 0.35); color: #4f8a72; background: rgba(79, 138, 114, 0.08); }.dashboard-refresh-button:hover:not(:disabled) { background: rgba(79, 138, 114, 0.14); }
 .reporting-banner, .selected-summary, .goal-panel, .dashboard-panel, .metric-card, .reporting-controls, .campaign-settings-panel { border-color: var(--color-border); background: rgba(231, 241, 237, 0.6); }.reporting-banner { color: #4f8a72; }.reporting-banner strong, .selected-summary h2, .goal-heading h2, .panel-heading h2, .settings-panel-heading h2 { color: var(--color-text); }.reporting-banner span, .reporting-controls p, .selected-summary-stats, .goal-footer, .panel-heading span, .chart-summary, .metric-card > span, .metric-card > small, .goal-budget span, .settings-panel-heading p { color: var(--color-muted); }.goal-panel { background: rgba(220, 220, 233, 0.45); }.goal-budget strong { color: var(--color-violet); }.goal-progress-track { background: rgba(16, 61, 60, 0.12); }.goal-progress-track span { background: linear-gradient(90deg, var(--color-accent), var(--color-violet)); }.metric-icon { border-color: rgba(79, 138, 114, 0.28); color: #4f8a72; background: rgba(79, 138, 114, 0.08); }.metric-card > strong, .table-number { color: var(--color-text) !important; }.period-control-group select, .settings-form-grid input, .settings-form-grid select { border-color: var(--color-border); color: var(--color-text); background: rgba(247, 250, 246, 0.8); }.dashboard-inline-error { color: #9f3e45; }.dashboard-inline-success { color: #4f8a72; }.dashboard-loading, .dashboard-footer { color: var(--color-muted); }.dashboard-footer { border-color: var(--color-border); }.dashboard-footer a:hover { color: var(--color-text); }.leaderboard-panel th, .leaderboard-panel td { border-color: var(--color-border); color: var(--color-muted); }.leaderboard-panel thead th { color: #708d87; }.leaderboard-panel tbody th { color: var(--color-text); }.leaderboard-panel code { border-color: var(--color-border); color: var(--color-violet); }.share-track { background: rgba(16, 61, 60, 0.12); }.share-track i { background: var(--color-violet); }.empty-icon { border-color: var(--color-border); background: rgba(116, 106, 157, 0.08); }.dashboard-empty { color: var(--color-muted); }.dashboard-empty > strong { color: var(--color-text); }
 
+
+/* Purple theme authority: this is intentionally last so legacy palette rules cannot leak into the live UI. */
+:root {
+  color-scheme: dark;
+  --color-bg: #0b0812;
+  --color-bg-soft: #110d1b;
+  --color-surface: #151022;
+  --color-surface-raised: #1d1630;
+  --color-border: rgba(217, 201, 255, 0.18);
+  --color-border-strong: rgba(217, 201, 255, 0.38);
+  --color-text: #f5f0ff;
+  --color-muted: #b8aec9;
+  --color-accent: #c3a7ff;
+  --color-accent-strong: #986dff;
+  --color-violet: #d8c9ff;
+  --color-blue: #9abaff;
+  --color-amber: #f0c782;
+  --shadow-card: 0 1.5rem 4rem rgba(0, 0, 0, 0.3);
+}
+
+html, body, #root { background: var(--color-bg); color: var(--color-text); }
+body::before { background: radial-gradient(circle at 50% -8%, rgba(195, 167, 255, 0.1), transparent 32rem), radial-gradient(circle at 95% 50%, rgba(152, 109, 255, 0.08), transparent 24rem); }
+.sosc-app-shell, .sosc-landing, .sosc-section, .sosc-final-cta { background-color: var(--color-bg); color: var(--color-text); }
+.sosc-app-shell .site-header { color: var(--color-text); background: rgba(11, 8, 18, 0.88); }
+.sosc-app-shell .header-label, .sosc-app-shell .primary-navigation, .sosc-app-shell .header-admin-link { color: var(--color-muted); }
+.sosc-app-shell .brand-mark { border-color: var(--color-border-strong); color: var(--color-accent); background: rgba(195, 167, 255, 0.08); }
+.sosc-app-shell .header-cta { color: #100a19; background: var(--color-accent); box-shadow: 0 0.35rem 0 rgba(152, 109, 255, 0.24); }
+.sosc-app-shell .header-cta:hover { background: var(--color-violet); }
+.sosc-hero h1, .sosc-section-heading h2, .sosc-module-card h3, .sosc-step-list h3, .sosc-final-cta h2 { color: var(--color-text); }
+.sosc-hero h1 span, .sosc-kicker, .sosc-section-index, .sosc-inline-link, .sosc-step-list > li > span { color: var(--color-accent); }
+.sosc-hero-copy > p, .sosc-section-heading > p, .sosc-module-card p, .sosc-step-list p, .sosc-final-cta p { color: var(--color-muted); }
+.registration-card, .dashboard-login-card { border-color: var(--color-border-strong); background: rgba(21, 16, 34, 0.9); }
+.field-group input, .period-control-group select, .settings-form-grid input, .settings-form-grid select { color: var(--color-text); background: rgba(29, 22, 48, 0.88); }
+.field-group input::placeholder { color: #897d9e; }
+.form-alert { color: #ffb4c1; background: rgba(170, 53, 100, 0.16); }
+.dashboard-shell { color: var(--color-text); background: var(--color-bg); }
+.reporting-banner, .selected-summary, .goal-panel, .dashboard-panel, .metric-card, .reporting-controls, .campaign-settings-panel { background: rgba(21, 16, 34, 0.72); }
+.goal-panel { background: linear-gradient(110deg, rgba(76, 44, 145, 0.42), rgba(21, 16, 34, 0.9)); }
+.goal-progress-track, .share-track { background: rgba(217, 201, 255, 0.12); }
+.dashboard-brand .brand-mark { border-color: var(--color-border-strong); color: var(--color-accent); background: rgba(195, 167, 255, 0.08); }
+.dashboard-user, .dashboard-eyebrow, .reporting-banner, .metric-icon { color: var(--color-accent); }
