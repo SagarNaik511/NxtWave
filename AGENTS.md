@@ -188,3 +188,4 @@ The project is tracked in Git on the `main` branch. PostgreSQL/cloud deployment 
 - The live public, registration, and dashboard surfaces now use a sky-blue editorial theme inspired by the latest visual reference: soft blue gradients, peach cloud-like accents, navy structure, white display headlines, and lime action controls.
 - The reference is used only for visual language. AI Sprint content, registration/referral behavior, dashboard metrics, and API contracts remain unchanged.
 - The theme is implemented as a final CSS variable and selector layer so older palette rules cannot override the active public shell.
+- The public home composition now uses a full-bleed sky hero, overlay navigation, stacked oversized display headline, layered CSS cloud artwork, poster-style workshop visual, metadata rails, editorial module cards, and a matching closing CTA. This preserves the supplied reference's visual structure without copying its content.

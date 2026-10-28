@@ -20,7 +20,7 @@ export function PublicLayout() {
   const anchor = (hash: string) => (isHome ? hash : `/${hash}`)
 
   return (
-    <div className="app-shell sosc-app-shell">
+    <div className={`app-shell sosc-app-shell ${isHome ? 'sosc-home-shell' : 'sosc-inner-shell'}`}>
       <header className="site-header">
         <Link className="brand sosc-brand" to="/" aria-label="AI Sprint home">
           <span className="brand-mark" aria-hidden="true"><Sparkles size={15} strokeWidth={2.2} /></span>
