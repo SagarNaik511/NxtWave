@@ -182,3 +182,9 @@ The project is tracked in Git on the `main` branch. PostgreSQL/cloud deployment 
 - Deactivation only changes `is_active`; historical `Registration.ambassador` foreign keys remain intact, while inactive codes cannot receive new registrations and inactive ambassadors stay out of the active leaderboard.
 - Registered `Ambassador` in Django admin and added the dashboard Manage Ambassadors panel with live list, status, counts, creation, editing, activation, and deactivation controls. Creating or changing an ambassador refreshes the existing leaderboard from persisted records.
 - Added `backend/tests/test_ambassador_management.py`. Verified `manage.py check`, `makemigrations --check --dry-run`, full backend tests (44 tests), `npm run typecheck`, and `npm run build`.
+
+## Cloudwave visual direction
+
+- The live public, registration, and dashboard surfaces now use a sky-blue editorial theme inspired by the latest visual reference: soft blue gradients, peach cloud-like accents, navy structure, white display headlines, and lime action controls.
+- The reference is used only for visual language. AI Sprint content, registration/referral behavior, dashboard metrics, and API contracts remain unchanged.
+- The theme is implemented as a final CSS variable and selector layer so older palette rules cannot override the active public shell.
