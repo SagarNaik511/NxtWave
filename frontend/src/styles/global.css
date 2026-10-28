@@ -248,6 +248,34 @@ h1 span { color: var(--color-violet); }
   .placeholder-page h1 { font-size: clamp(3rem, 15vw, 5rem); }
 }
 
+/* Hero readability pass: keep the reference's oversized type as the focal point. */
+.sosc-app-shell .primary-navigation { font-size: 0.64rem; }
+.sosc-app-shell .header-label { font-size: 0.58rem; }
+.sosc-app-shell .header-cta { font-size: 0.6rem; }
+.cloudwave-hero-main { display: block; min-height: 620px; }
+.cloudwave-copy { max-width: 1160px; margin: 0 auto; text-align: center; }
+.cloudwave-copy h1 { max-width: 1160px; margin: 2rem auto 1.1rem; color: #0a2748; font-size: clamp(5rem, 12vw, 11rem); line-height: 0.73; letter-spacing: -0.13em; text-align: center; text-shadow: 0 0.18rem 0 rgba(255, 255, 255, 0.46), 0 0.32rem 0 rgba(25, 70, 112, 0.12); }
+.cloudwave-copy h1 span { width: max-content; margin-right: auto; margin-left: auto; }
+.cloudwave-copy h1 span:nth-child(1), .cloudwave-copy h1 span:nth-child(2), .cloudwave-copy h1 span:nth-child(3) { margin-left: auto; transform: skewX(-4deg) rotate(-1deg); }
+.cloudwave-copy h1 span:nth-child(2) { transform: skewX(4deg) rotate(1deg); }
+.cloudwave-subtitle { color: #0a2748; font-size: clamp(0.86rem, 1.4vw, 1.1rem); font-weight: 700; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.42); }
+.cloudwave-copy > p { max-width: 620px; margin: 1.5rem auto 0; color: #173e66; font-size: clamp(0.95rem, 1.4vw, 1.12rem); line-height: 1.65; }
+.cloudwave-actions { justify-content: center; }
+.cloudwave-facts { justify-content: center; font-size: 0.62rem; }
+.cloudwave-cloud { opacity: 0.66; }
+.cloudwave-cloud-left { top: 12rem; left: -14rem; }
+.cloudwave-cloud-right { top: 30rem; right: -15rem; }
+.cloudwave-cloud-low { bottom: 1rem; left: 42%; opacity: 0.45; }
+
+@media (max-width: 760px) {
+  .cloudwave-hero-main { min-height: 0; }
+  .cloudwave-copy h1 { font-size: clamp(4rem, 19vw, 7rem); line-height: 0.76; }
+  .cloudwave-copy h1 span { width: 100%; }
+  .cloudwave-copy > p { font-size: 0.9rem; }
+  .cloudwave-eyebrow { font-size: 0.58rem; }
+  .cloudwave-facts { font-size: 0.5rem; }
+}
+
 /* Shared light-surface treatment for registration and growth operations. */
 .registration-page, .success-page { color: var(--color-text); }
 .registration-intro h1, .success-page h1 { color: var(--color-text); font-family: var(--font-pixel); letter-spacing: -0.09em; }

@@ -3,7 +3,6 @@ import {
   Activity,
   ArrowDown,
   ArrowRight,
-  Braces,
   Check,
   CircleHelp,
   Code2,
@@ -61,17 +60,6 @@ export function HomePage() {
             <div className="cloudwave-facts"><span>ONLINE</span><span>FREE TO ATTEND</span><span>BEGINNER FRIENDLY</span></div>
           </div>
 
-          <div className="cloudwave-poster" aria-label="AI Sprint workshop overview">
-            <div className="cloudwave-poster-label">BUILD / SHARE / BEGIN</div>
-            <div className="cloudwave-poster-cloud poster-cloud-one" aria-hidden="true" />
-            <div className="cloudwave-poster-cloud poster-cloud-two" aria-hidden="true" />
-            <div className="cloudwave-poster-orbit poster-orbit-one" aria-hidden="true" />
-            <div className="cloudwave-poster-orbit poster-orbit-two" aria-hidden="true" />
-            <div className="cloudwave-poster-core"><Braces size={46} strokeWidth={1.4} aria-hidden="true" /><strong>AI</strong><span>PROJECT<br />STARTER</span></div>
-            <div className="cloudwave-poster-side poster-side-left"><span>01</span><strong>IDEA</strong><small>Start small.</small></div>
-            <div className="cloudwave-poster-side poster-side-right"><span>02</span><strong>SHIP</strong><small>Make it real.</small></div>
-            <div className="cloudwave-poster-footer"><span>60 MINUTE WORKSHOP</span><span>NO EXPERIENCE NEEDED</span></div>
-          </div>
         </div>
 
         <div className="cloudwave-hero-bottom"><span>LOC_DATA / ONLINE</span><span>SCROLL TO EXPLORE <ArrowDown size={14} aria-hidden="true" /></span><span>01 / 04</span></div>
