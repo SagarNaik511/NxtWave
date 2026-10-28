@@ -1,4 +1,4 @@
-import { ArrowUpRight, Menu, Sprout, X } from 'lucide-react'
+import { ArrowUpRight, Menu, Sparkles, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 
@@ -20,15 +20,13 @@ export function PublicLayout() {
   const anchor = (hash: string) => (isHome ? hash : `/${hash}`)
 
   return (
-    <div className="app-shell quiet-app-shell">
+    <div className="app-shell sosc-app-shell">
       <header className="site-header">
-        <Link className="brand quiet-brand" to="/" aria-label="AI Sprint home">
-          <span className="brand-mark" aria-hidden="true">
-            <Sprout size={16} strokeWidth={2.5} />
-          </span>
-          <span>AI Sprint <small>/ QUIET BUILD CLUB</small></span>
+        <Link className="brand sosc-brand" to="/" aria-label="AI Sprint home">
+          <span className="brand-mark" aria-hidden="true"><Sparkles size={15} strokeWidth={2.2} /></span>
+          <span>AI SPRINT<small>/ BUILD TOGETHER</small></span>
         </Link>
-        <div className="header-label">A FREE LIVE WORKSHOP</div>
+        <div className="header-label">PRACTICAL AI / COLLABORATION / BUILDING</div>
         <button
           className="menu-toggle"
           type="button"
@@ -41,15 +39,16 @@ export function PublicLayout() {
         </button>
         <div className={`header-navigation ${isMenuOpen ? 'is-open' : ''}`}>
           <nav id="primary-navigation" className="primary-navigation" aria-label="Primary navigation">
-            <Link to={anchor('#features')} onClick={closeMenu}>Features</Link>
-            <Link to={anchor('#workshop')} onClick={closeMenu}>Workshop</Link>
-            <Link to={anchor('#faq')} onClick={closeMenu}>FAQ</Link>
+            <Link to={anchor('#about')} onClick={closeMenu}>01 HOME</Link>
+            <Link to={anchor('#workshop')} onClick={closeMenu}>02 WORKSHOP</Link>
+            <Link to={anchor('#build')} onClick={closeMenu}>03 BUILD</Link>
+            <Link to={anchor('#faq')} onClick={closeMenu}>04 FAQ</Link>
           </nav>
           <Link className="header-admin-link" to="/dashboard" onClick={closeMenu}>
-            Admin Dashboard
+            OPS DASHBOARD
           </Link>
           <Link className="header-cta" to="/register" onClick={closeMenu}>
-            Register free <ArrowUpRight size={16} aria-hidden="true" />
+            START SPRINT <ArrowUpRight size={16} aria-hidden="true" />
           </Link>
         </div>
       </header>
@@ -57,13 +56,14 @@ export function PublicLayout() {
         <Outlet />
       </main>
       <footer className="site-footer">
-        <div className="footer-brand">
-          <span className="brand-mark" aria-hidden="true"><Sprout size={15} /></span>
-          <span>AI Sprint</span>
+        <div className="footer-brand sosc-footer-brand">
+          <span className="brand-mark" aria-hidden="true"><Sparkles size={14} /></span>
+          <span>AI SPRINT.</span>
         </div>
-        <span>Make a little space for your first practical step in AI.</span>
+        <span>Build your first practical step in AI.</span>
         <nav className="footer-navigation" aria-label="Footer navigation">
-          <Link to={anchor('#features')}>Features</Link>
+          <Link to={anchor('#about')}>About</Link>
+          <Link to={anchor('#workshop')}>Workshop</Link>
           <Link to={anchor('#faq')}>FAQ</Link>
           <Link to="/register">Register</Link>
         </nav>

@@ -164,12 +164,13 @@ Production-readiness work is implemented and documented:
 - `backend/config/settings.py` now includes Render's injected `RENDER_EXTERNAL_HOSTNAME` in `ALLOWED_HOSTS` when present. Custom domains still require explicit production host, CORS, and CSRF configuration.
 - The Blueprint leaves `VITE_API_BASE_URL` unsynced intentionally because the frontend build needs the actual public API URL. Render setup instructions and free-plan persistence limitations are documented in `README.md`.
 
-## Quiet pixel garden visual direction
+## Purple editorial visual direction
 
-- The public product theme now follows the supplied reference: pale mint sky, restrained coral actions, monospace/pixel-inspired typography, soft editorial spacing, and a CSS-built pixel garden scene with clouds, trees, path, character, and water.
-- The reference is treated as visual direction rather than copied artwork. The illustration is code-native CSS, so no external image asset or image-generation dependency is required.
-- Public navigation, registration, dashboard, empty states, cards, forms, and footer share the light mint surface system. Existing API-backed behavior and truthful campaign copy remain unchanged.
-- The landing page uses the reference's calm vocabulary while retaining the workshop's actual purpose: building a first AI project in 60 minutes.
+- The public product theme now follows the supplied community-site direction: dark near-black surfaces, numbered utility navigation, oversized condensed editorial headlines, thin grid borders, status metadata, module/event cards, and a strong closing CTA.
+- Purple is the primary accent system, with lavender highlights, violet surfaces, restrained pink/blue supporting accents, and high-contrast text. The reference is treated as visual direction rather than copied content or artwork.
+- The public landing page now presents AI Sprint as a student build session with workshop modules, a three-step build path, FAQ, and registration CTAs. Registration, referral, dashboard, and API-backed behavior remain unchanged.
+- The same purple system is applied to the registration and authenticated growth surfaces for a coherent product experience.
+- Browser-host visual QA was not available in the current environment; type-check and production build verification were completed.
 
 The project is tracked in Git on the `main` branch. PostgreSQL/cloud deployment and browser-based QA remain to be performed before a real launch.
 
