@@ -160,7 +160,6 @@ export function AmbassadorManagementPanel({ token, onChanged, onUnauthorized }: 
             <label htmlFor="ambassador-code">Custom referral code <span>(optional)</span></label>
             <input id="ambassador-code" name="ambassador-code" maxLength={50} pattern="[A-Za-z0-9-]+" placeholder="Generated if blank" />
           </div>
-          <p className="management-help">Codes are normalized to uppercase. Generated codes use the <code>AMB-…</code> convention.</p>
           {error && <div className="dashboard-inline-error" role="alert"><CircleAlert size={16} aria-hidden="true" />{error}</div>}
           {message && <div className="dashboard-inline-success" role="status"><CheckCircle2 size={16} aria-hidden="true" />{message}</div>}
           <button className="button button-primary" type="submit" disabled={saving}>{saving ? <LoaderCircle className="spin" size={15} /> : <Plus size={15} />} {saving ? 'Creating…' : 'Create ambassador'}</button>
