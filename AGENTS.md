@@ -171,4 +171,13 @@ Production-readiness work is implemented and documented:
 - Public navigation, registration, dashboard, empty states, cards, forms, and footer share the light mint surface system. Existing API-backed behavior and truthful campaign copy remain unchanged.
 - The landing page uses the reference's calm vocabulary while retaining the workshop's actual purpose: building a first AI project in 60 minutes.
 
-The workspace is not currently a Git repository; repository initialization and the first baseline commit are still outstanding. PostgreSQL, cloud deployment, and browser-based QA remain to be performed before a real launch.
+The project is tracked in Git on the `main` branch. PostgreSQL/cloud deployment and browser-based QA remain to be performed before a real launch.
+
+## Section 8 progress — Ambassador management
+
+- Added staff-only referral management endpoints: `GET/POST /api/referrals/ambassadors/`, `PATCH /api/referrals/ambassadors/<id>/`, and explicit `POST /activate/` and `POST /deactivate/` actions.
+- Management endpoints use the existing DRF token authentication and `IsAdminUser` authorization. Responses contain ambassador fields and aggregate attributed-registration counts only; no student personal data is returned.
+- Custom codes are normalized to uppercase and validated against the existing letters/numbers/hyphens convention. Missing codes are generated as unique `AMB-<NAME>-<SUFFIX>` values. Duplicate codes and invalid input return field-specific errors.
+- Deactivation only changes `is_active`; historical `Registration.ambassador` foreign keys remain intact, while inactive codes cannot receive new registrations and inactive ambassadors stay out of the active leaderboard.
+- Registered `Ambassador` in Django admin and added the dashboard Manage Ambassadors panel with live list, status, counts, creation, editing, activation, and deactivation controls. Creating or changing an ambassador refreshes the existing leaderboard from persisted records.
+- Added `backend/tests/test_ambassador_management.py`. Verified `manage.py check`, `makemigrations --check --dry-run`, full backend tests (44 tests), `npm run typecheck`, and `npm run build`.

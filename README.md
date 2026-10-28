@@ -2,11 +2,11 @@
 
 AI Sprint is a full-stack foundation for the NxtWave Growth Intern recruitment challenge. It will support a workshop registration and referral campaign for **Build Your First AI Project in 60 Minutes**.
 
-This repository currently contains Sections 1–7: the React/Vite frontend foundation, public workshop experience, persisted registration workflow, student ambassador referral tracking, authenticated growth analytics, campaign operations, and production hardening.
+This repository currently contains Sections 1–8: the React/Vite frontend foundation, public workshop experience, persisted registration workflow, student ambassador referral tracking and management, authenticated growth analytics, campaign operations, and production hardening.
 
 ## Project structure
 
-Sections 1-7 are implemented: the React/Vite frontend foundation, public workshop experience, persisted registration workflow, student ambassador referrals, authenticated analytics, campaign operations, and production hardening. Dashboard API smoke checks are documented in the quality section below; no dashboard 500 was reproducible in the current local checkout.
+Sections 1-8 are implemented: the React/Vite frontend foundation, public workshop experience, persisted registration workflow, student ambassador referrals and management, authenticated analytics, campaign operations, and production hardening. Dashboard API smoke checks are documented in the quality section below; no dashboard 500 was reproducible in the current local checkout.
 
 ```text
 AGENTS.md
@@ -72,7 +72,7 @@ The current token authentication keeps tokens in frontend memory and rotates the
 
 The repository includes `render.yaml`, which defines a Render Postgres database, a Django web service, and a Render static site for the Vite frontend. Render Blueprints use this file to provision the connected resources together. The backend automatically accepts Render's `RENDER_EXTERNAL_HOSTNAME`; custom domains must still be added to `DJANGO_ALLOWED_HOSTS`, `DJANGO_CORS_ALLOWED_ORIGINS`, and `DJANGO_CSRF_TRUSTED_ORIGINS`.
 
-1. Push this repository to GitHub, GitLab, or Bitbucket. Render deploys from a connected Git repository; this local workspace does not contain a Git remote.
+1. Push this repository to GitHub, GitLab, or Bitbucket. The current project is published at `https://github.com/SagarNaik511/NxtWave` on the `main` branch; Render deploys from a connected Git repository.
 2. In Render, choose **New → Blueprint**, connect the repository, and select the branch containing `render.yaml`.
 3. When Render asks for the unsynced `VITE_API_BASE_URL`, enter the public backend URL followed by `/api`, for example `https://ai-sprint-api.onrender.com/api`. If Render assigns a different hostname, use the actual API service URL shown in its dashboard.
 4. Apply the Blueprint. The backend build installs Python dependencies, collects Django static files, and applies migrations; the service starts with Gunicorn and exposes `/api/health/` as its health check. The frontend builds from `frontend/` and rewrites client-side routes to `index.html`.
@@ -226,7 +226,18 @@ Unknown or inactive codes also return `200 OK`, with no personal registration da
 }
 ```
 
-The endpoint normalizes codes to uppercase. Inactive ambassadors cannot receive new attributions. To deactivate one, set `is_active=False` through Django's future administrative workflow or a controlled shell operation.
+The endpoint normalizes codes to uppercase. Inactive ambassadors cannot receive new attributions. Staff can manage ambassadors from the protected dashboard, or through the staff-only management endpoints below.
+
+### Staff ambassador management
+
+All management requests require `Authorization: Token <token>` from a Django user with `is_staff=True`:
+
+- `GET /api/referrals/ambassadors/` — list ambassadors with status, referral code, and aggregate attributed-registration count.
+- `POST /api/referrals/ambassadors/` — create an ambassador with a required `name` and optional `referral_code`. If omitted, the API generates a unique uppercase `AMB-…` code.
+- `PATCH /api/referrals/ambassadors/<id>/` — update the ambassador name or referral code without deleting historical attribution.
+- `POST /api/referrals/ambassadors/<id>/activate/` and `/deactivate/` — change availability for new registrations while preserving historical registrations.
+
+The management response contains no student names, emails, colleges, or individual registration records. The attributed count increases only after a valid registration is persisted through the public registration endpoint. Duplicate codes and invalid values return a `400` response with an `errors` object.
 
 For a controlled local deactivation:
 

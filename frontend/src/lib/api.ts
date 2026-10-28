@@ -1,5 +1,6 @@
 import type {
   AdminLoginResponse,
+  AmbassadorPayload,
   AnalyticsAmbassadors,
   AnalyticsDaily,
   AnalyticsOverview,
@@ -9,6 +10,8 @@ import type {
   ReferralValidationResponse,
   RegistrationPayload,
   RegistrationResponse,
+  ManagedAmbassador,
+  ManagedAmbassadorsResponse,
 } from '../types/api'
 
 const configuredApiBaseUrl = import.meta.env.VITE_API_BASE_URL?.trim()
@@ -119,6 +122,33 @@ export function updateCampaignSettings(token: string, payload: Partial<CampaignS
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
+  }, token)
+}
+
+export function getManagedAmbassadors(token: string) {
+  return requestJson<ManagedAmbassadorsResponse>('/referrals/ambassadors/', undefined, token)
+}
+
+export function createManagedAmbassador(token: string, payload: AmbassadorPayload) {
+  return requestJson<ManagedAmbassador>('/referrals/ambassadors/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  }, token)
+}
+
+export function updateManagedAmbassador(token: string, id: number, payload: Partial<AmbassadorPayload>) {
+  return requestJson<ManagedAmbassador>(`/referrals/ambassadors/${id}/`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  }, token)
+}
+
+export function setManagedAmbassadorStatus(token: string, id: number, isActive: boolean) {
+  const action = isActive ? 'activate' : 'deactivate'
+  return requestJson<ManagedAmbassador>(`/referrals/ambassadors/${id}/${action}/`, {
+    method: 'POST',
   }, token)
 }
 

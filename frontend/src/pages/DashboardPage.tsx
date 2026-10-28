@@ -37,6 +37,7 @@ import {
   YAxis,
 } from 'recharts'
 
+import { AmbassadorManagementPanel } from '../components/AmbassadorManagementPanel'
 import {
   ApiError,
   downloadAnalyticsCsv,
@@ -347,6 +348,8 @@ export function DashboardPage() {
         </div>
 
         <section className="dashboard-panel leaderboard-panel" aria-labelledby="leaderboard-heading"><div className="panel-heading-with-action"><PanelHeading id="leaderboard-heading" icon={<ShieldCheck size={17} />} title="Ambassador leaderboard" detail={data.ambassadors ? `${data.ambassadors.attributed_registrations} selected-period attributed registrations` : 'Live attribution data'} /><button className="button button-secondary export-button" type="button" onClick={() => void handleExport()} disabled={exportLoading}>{exportLoading ? <LoaderCircle className="spin" size={15} /> : <Download size={15} />} {exportLoading ? 'Preparing CSV…' : 'Export CSV'}</button></div>{!data.ambassadors ? <PanelError title="Leaderboard data unavailable" onRetry={() => void loadDashboard(token)} /> : data.ambassadors.ambassadors.length === 0 ? <DashboardEmpty icon={<UsersRound size={20} />} title="Leaderboard is empty" message={data.ambassadors.message ?? 'Active ambassadors will appear here once they are configured.'} /> : <div className="table-scroll"><table><caption className="sr-only">Active ambassador registrations and share of selected-period registrations</caption><thead><tr><th scope="col">Rank</th><th scope="col">Ambassador</th><th scope="col">Referral code</th><th scope="col">Registrations</th><th scope="col">Share of selected period</th></tr></thead><tbody>{data.ambassadors.ambassadors.map((ambassador) => <tr key={ambassador.referral_code}><td><span className={`rank-badge ${ambassador.rank === 1 ? 'rank-first' : ''}`}>{String(ambassador.rank).padStart(2, '0')}</span></td><th scope="row">{ambassador.name}</th><td><code>{ambassador.referral_code}</code></td><td className="table-number">{ambassador.registration_count}</td><td><div className="share-cell"><span>{ambassador.share_of_total_registrations.toFixed(1)}%</span><span className="share-track"><i style={{ width: `${Math.min(ambassador.share_of_total_registrations, 100)}%` }} /></span></div></td></tr>)}</tbody></table></div>}{data.ambassadors && data.ambassadors.inactive_historical_attributed_registrations > 0 && <p className="panel-footnote"><Info size={14} aria-hidden="true" /> {data.ambassadors.inactive_historical_attributed_registrations} historical registration(s) remain attributed to inactive ambassadors and are excluded from this active leaderboard.</p>}</section>
+
+        <AmbassadorManagementPanel token={token} onChanged={() => void loadDashboard(token)} onUnauthorized={() => { setToken(null); setUsername(''); setData(initialData); setLoginError('Your administrator session expired. Please sign in again.') }} />
       </main>
       <footer className="dashboard-footer"><Link to="/"><ArrowLeft size={14} /> Back to website</Link><span>Aggregate metrics only · no fabricated performance data</span></footer>
     </div>

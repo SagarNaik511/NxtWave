@@ -126,3 +126,23 @@ export interface AdminLoginResponse {
   user: { username: string }
 }
 
+export interface ManagedAmbassador {
+  id: number
+  name: string
+  referral_code: string
+  college_name: string
+  is_active: boolean
+  attributed_registration_count: number
+  created_at: string
+  updated_at: string
+}
+
+export interface ManagedAmbassadorsResponse {
+  ambassadors: ManagedAmbassador[]
+}
+
+export interface AmbassadorPayload {
+  name: string
+  referral_code?: string
+}
+
