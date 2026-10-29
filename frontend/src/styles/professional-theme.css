@@ -219,3 +219,44 @@ button, input, select { font-family: inherit; }
     width: min(100% - 2rem, 620px);
   }
 }
+
+/* Center the workshop message once the decorative code panel is removed. */
+.cloudwave-hero-main {
+  display: block;
+  min-height: 590px;
+  padding: 4rem 0 3rem;
+}
+.cloudwave-copy {
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+}
+.cloudwave-copy h1 {
+  max-width: 980px;
+  margin: 1.5rem auto 1.25rem;
+  text-align: center;
+}
+.cloudwave-copy h1 span {
+  width: max-content;
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+.cloudwave-copy > p {
+  max-width: 620px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.cloudwave-actions,
+.cloudwave-facts {
+  justify-content: center;
+}
+
+@media (max-width: 760px) {
+  .cloudwave-hero-main {
+    min-height: 0;
+    padding: 3.5rem 0 2.8rem;
+  }
+  .cloudwave-copy h1 span {
+    width: 100%;
+  }
+}
