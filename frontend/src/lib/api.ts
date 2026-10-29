@@ -15,10 +15,16 @@ import type {
 } from '../types/api'
 
 const configuredApiBaseUrl = import.meta.env.VITE_API_BASE_URL?.trim()
-if (import.meta.env.PROD && !configuredApiBaseUrl) {
-  throw new Error('VITE_API_BASE_URL must be configured for production builds.')
+
+function normalizeApiBaseUrl(value: string) {
+  const normalized = value.trim().replace(/\/+$/, '')
+  if (!normalized) return '/api'
+  return /\/api$/i.test(normalized) ? normalized : `${normalized}/api`
 }
-const apiBaseUrl = (configuredApiBaseUrl ?? 'http://127.0.0.1:8000/api').replace(/\/$/, '')
+
+// Render users commonly paste the backend service URL without `/api`. Normalize
+// that safe configuration mistake instead of turning every request into a 404.
+const apiBaseUrl = normalizeApiBaseUrl(configuredApiBaseUrl ?? (import.meta.env.PROD ? '/api' : 'http://127.0.0.1:8000/api'))
 
 function analyticsQuery(params?: AnalyticsPeriodParams) {
   if (!params) return ''
@@ -43,6 +49,10 @@ export class ApiError extends Error {
 }
 
 async function requestJson<T>(path: string, init?: RequestInit, token?: string): Promise<T> {
+  if (import.meta.env.PROD && !configuredApiBaseUrl) {
+    throw new ApiError('The frontend API URL is not configured. Set VITE_API_BASE_URL to the deployed backend URL.', 0)
+  }
+
   let response: Response
 
   try {
@@ -66,7 +76,11 @@ async function requestJson<T>(path: string, init?: RequestInit, token?: string):
       : null
     const message = typeof detail === 'string'
       ? detail
-      : `The API returned an error (${response.status}).`
+      : response.status === 404
+        ? 'The API endpoint was not found. Check that VITE_API_BASE_URL points to the backend URL and includes /api.'
+        : response.status >= 500
+          ? `The backend returned an error (${response.status}). Please try again shortly.`
+          : `The API returned an error (${response.status}).`
     throw new ApiError(message, response.status, responseBody)
   }
 

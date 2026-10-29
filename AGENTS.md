@@ -203,3 +203,11 @@ The project is tracked in Git on the `main` branch. PostgreSQL/cloud deployment 
 - Navigation now uses clear conversion-oriented labels (`ABOUT`, `WHAT YOU'LL LEARN`, `HOW IT WORKS`, `FAQ`) and the primary action is `REGISTER FOR FREE`.
 - Existing routes, API calls, authentication, referral attribution, reporting periods, campaign settings, leaderboard behavior, and aggregate CSV export remain unchanged.
 - The redesign was verified with the frontend TypeScript check, production build, and `git diff --check`. Browser viewport QA remains a manual handoff because no browser automation is configured in this workspace.
+
+## Login deployment fix
+
+- Normalized `VITE_API_BASE_URL` so a Render backend URL with or without a trailing `/api` resolves to the REST API correctly.
+- Production frontend builds now surface a missing API URL as an actionable configuration error instead of failing during module initialization.
+- Admin sign-in distinguishes invalid credentials, missing API routes, unreachable/CORS failures, and backend 5xx responses.
+- `render.yaml` now wires the frontend API base URL to the API service's `RENDER_EXTERNAL_URL`; existing Render services may need a Blueprint sync or a manual environment-variable update.
+- Verified with `npm run typecheck`, `npm run build`, `python manage.py check`, `python manage.py test` (44 tests), and `git diff --check`.

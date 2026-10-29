@@ -74,7 +74,7 @@ The repository includes `render.yaml`, which defines a Render Postgres database,
 
 1. Push this repository to GitHub, GitLab, or Bitbucket. The current project is published at `https://github.com/SagarNaik511/NxtWave` on the `main` branch; Render deploys from a connected Git repository.
 2. In Render, choose **New → Blueprint**, connect the repository, and select the branch containing `render.yaml`.
-3. When Render asks for the unsynced `VITE_API_BASE_URL`, enter the public backend URL followed by `/api`, for example `https://ai-sprint-api.onrender.com/api`. If Render assigns a different hostname, use the actual API service URL shown in its dashboard.
+3. The Blueprint now wires `VITE_API_BASE_URL` to the API service URL automatically. If the frontend service was created before this wiring was added, set `VITE_API_BASE_URL` manually to the public backend URL followed by `/api`, for example `https://ai-sprint-api.onrender.com/api`. The frontend also normalizes a backend URL without `/api`, but using the explicit `/api` value is recommended.
 4. Apply the Blueprint. The backend build installs Python dependencies, collects Django static files, and applies migrations; the service starts with Gunicorn and exposes `/api/health/` as its health check. The frontend builds from `frontend/` and rewrites client-side routes to `index.html`.
 5. Create the administrator. On a paid Render web service, use its Render Shell:
 

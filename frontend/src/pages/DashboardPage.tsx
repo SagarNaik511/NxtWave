@@ -101,6 +101,14 @@ function getErrorMessage(error: unknown) {
   return 'The dashboard data could not be loaded. Please refresh and try again.'
 }
 
+function getLoginErrorMessage(error: unknown) {
+  if (error instanceof ApiError && error.status === 401) return 'Invalid administrator credentials.'
+  if (error instanceof ApiError && error.status === 404) return 'The backend login endpoint was not found. Check the deployed API URL and make sure it includes /api.'
+  if (error instanceof ApiError && error.status >= 500) return 'The backend is temporarily unavailable. Check the API service health and try again.'
+  if (error instanceof ApiError && error.status === 0) return error.message || 'The frontend could not reach the backend API.'
+  return 'The sign-in request could not be completed. Please try again.'
+}
+
 function periodParams(period: AnalyticsPeriodKey, startDate: string, endDate: string): AnalyticsPeriodParams {
   return {
     period,
@@ -197,7 +205,7 @@ export function DashboardPage() {
       setUsername(response.user.username)
       await loadDashboard(response.token)
     } catch (error: unknown) {
-      setLoginError(error instanceof ApiError && error.status === 401 ? 'Invalid administrator credentials.' : 'The sign-in service is unavailable. Please try again.')
+      setLoginError(getLoginErrorMessage(error))
     } finally {
       setLoginLoading(false)
     }
