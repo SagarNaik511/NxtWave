@@ -265,3 +265,249 @@ button, input, select { font-family: inherit; }
     width: 100%;
   }
 }
+
+/* Keep the authenticated workspace on the same cream-and-forest visual system
+   as the public workshop experience. This final layer intentionally supersedes
+   the earlier experimental dark dashboard rules above. */
+.dashboard-shell,
+.dashboard-auth-shell {
+  color-scheme: light;
+  color: #10231a !important;
+  background: #f5f3ed !important;
+}
+.dashboard-shell .dashboard-header,
+.dashboard-auth-shell .dashboard-header,
+.dashboard-shell .dashboard-footer {
+  border-color: #d8ded5 !important;
+}
+.dashboard-shell .dashboard-brand,
+.dashboard-shell .dashboard-user,
+.dashboard-auth-shell .dashboard-brand,
+.dashboard-auth-shell .dashboard-brand small {
+  color: #10231a !important;
+}
+.dashboard-shell .dashboard-brand small,
+.dashboard-shell .dashboard-ghost-button,
+.dashboard-shell .dashboard-back-public,
+.dashboard-auth-shell .dashboard-back-public {
+  color: #587064 !important;
+}
+.dashboard-shell .dashboard-brand .brand-mark,
+.dashboard-auth-shell .dashboard-brand .brand-mark {
+  border-color: rgba(24, 121, 78, 0.5) !important;
+  color: #18794e !important;
+  background: rgba(24, 121, 78, 0.08) !important;
+}
+.dashboard-shell .dashboard-ghost-button,
+.dashboard-shell .dashboard-back-public,
+.dashboard-auth-shell .dashboard-back-public {
+  border-color: #d8ded5 !important;
+  background: transparent !important;
+}
+.dashboard-shell .dashboard-ghost-button:hover,
+.dashboard-shell .dashboard-back-public:hover,
+.dashboard-auth-shell .dashboard-back-public:hover {
+  border-color: #18794e !important;
+  color: #18794e !important;
+}
+.dashboard-shell .dashboard-intro h1,
+.dashboard-auth-shell .dashboard-auth-copy h1 {
+  color: #10231a !important;
+}
+.dashboard-shell .dashboard-intro p,
+.dashboard-auth-shell .dashboard-auth-copy p {
+  color: #587064 !important;
+}
+.dashboard-shell .dashboard-eyebrow,
+.dashboard-auth-shell .dashboard-eyebrow {
+  color: #18794e !important;
+}
+.dashboard-shell .dashboard-refresh-button {
+  border-color: #18794e !important;
+  color: #fff !important;
+  background: #18794e !important;
+}
+.dashboard-shell .dashboard-refresh-button:hover:not(:disabled) {
+  background: #0e5b3a !important;
+}
+.dashboard-shell .reporting-controls,
+.dashboard-shell .reporting-banner,
+.dashboard-shell .selected-summary,
+.dashboard-shell .goal-panel,
+.dashboard-shell .dashboard-panel,
+.dashboard-shell .metric-card,
+.dashboard-shell .campaign-settings-panel {
+  border-color: #d8ded5 !important;
+  color: #10231a !important;
+  background: rgba(255, 255, 255, 0.76) !important;
+  box-shadow: 0 0.9rem 2.4rem rgba(31, 53, 40, 0.06) !important;
+}
+.dashboard-shell .goal-panel {
+  background: linear-gradient(110deg, #d9f1dd, #fff) !important;
+}
+.dashboard-shell .reporting-controls h2,
+.dashboard-shell .reporting-banner strong,
+.dashboard-shell .selected-summary h2,
+.dashboard-shell .goal-heading h2,
+.dashboard-shell .panel-heading h2,
+.dashboard-shell .settings-panel-heading h2,
+.dashboard-shell .metric-card > strong,
+.dashboard-shell .table-number {
+  color: #10231a !important;
+}
+.dashboard-shell .reporting-controls p,
+.dashboard-shell .reporting-banner span,
+.dashboard-shell .selected-summary-stats,
+.dashboard-shell .goal-footer,
+.dashboard-shell .panel-heading span,
+.dashboard-shell .chart-summary,
+.dashboard-shell .metric-card > span,
+.dashboard-shell .metric-card > small,
+.dashboard-shell .goal-budget span,
+.dashboard-shell .settings-panel-heading p,
+.dashboard-shell .dashboard-loading,
+.dashboard-shell .dashboard-footer {
+  color: #587064 !important;
+}
+.dashboard-shell .reporting-banner,
+.dashboard-shell .reporting-banner svg,
+.dashboard-shell .selected-summary .dashboard-eyebrow,
+.dashboard-shell .goal-budget strong {
+  color: #18794e !important;
+}
+.dashboard-shell .selected-summary-stats strong {
+  color: #0e5b3a !important;
+}
+.dashboard-shell .period-control-group label,
+.dashboard-shell .field-group label,
+.dashboard-shell .settings-form-grid label {
+  color: #10231a !important;
+}
+.dashboard-shell .period-control-group select,
+.dashboard-shell .settings-form-grid input,
+.dashboard-shell .settings-form-grid select,
+.dashboard-shell .custom-period-fields input {
+  border-color: #aebdae !important;
+  color: #10231a !important;
+  background: #fff !important;
+}
+.dashboard-shell .period-control-group select:focus,
+.dashboard-shell .settings-form-grid input:focus,
+.dashboard-shell .custom-period-fields input:focus {
+  outline-color: rgba(24, 121, 78, 0.28) !important;
+}
+.dashboard-shell .metric-icon {
+  border-color: rgba(24, 121, 78, 0.28) !important;
+  color: #18794e !important;
+  background: rgba(24, 121, 78, 0.08) !important;
+}
+.dashboard-shell .goal-progress-track,
+.dashboard-shell .share-track {
+  background: rgba(16, 61, 60, 0.12) !important;
+}
+.dashboard-shell .goal-progress-track span {
+  background: linear-gradient(90deg, #18794e, #82c99d) !important;
+}
+.dashboard-shell .leaderboard-panel th,
+.dashboard-shell .leaderboard-panel td {
+  border-color: #d8ded5 !important;
+  color: #587064 !important;
+}
+.dashboard-shell .leaderboard-panel thead th,
+.dashboard-shell .leaderboard-panel tbody th,
+.dashboard-shell .leaderboard-panel code {
+  color: #10231a !important;
+}
+.dashboard-shell .leaderboard-panel thead th {
+  color: #18794e !important;
+}
+.dashboard-shell .leaderboard-panel code {
+  border-color: rgba(24, 121, 78, 0.28) !important;
+}
+.dashboard-shell .share-track i {
+  background: #18794e !important;
+}
+.dashboard-shell .ambassador-create-form,
+.dashboard-shell .ambassador-row {
+  border-color: #d8ded5 !important;
+  background: rgba(255, 255, 255, 0.7) !important;
+}
+.dashboard-shell .management-form-label,
+.dashboard-shell .ambassador-name-line strong,
+.dashboard-shell .management-list-heading,
+.dashboard-shell .ambassador-count,
+.dashboard-shell .management-state {
+  color: #10231a !important;
+}
+.dashboard-shell .ambassador-row code {
+  border-color: rgba(24, 121, 78, 0.28) !important;
+  color: #18794e !important;
+}
+.dashboard-shell .status-active {
+  color: #0e5b3a !important;
+  background: rgba(24, 121, 78, 0.1) !important;
+}
+.dashboard-shell .status-inactive {
+  color: #9f3e45 !important;
+  background: rgba(180, 66, 66, 0.08) !important;
+}
+.dashboard-shell .button-secondary {
+  border-color: #aebdae !important;
+  color: #10231a !important;
+  background: transparent !important;
+}
+.dashboard-shell .button-secondary:hover:not(:disabled) {
+  border-color: #18794e !important;
+  color: #18794e !important;
+}
+.dashboard-shell .button-primary {
+  color: #fff !important;
+  background: #18794e !important;
+}
+.dashboard-shell .button-primary:hover:not(:disabled) {
+  background: #0e5b3a !important;
+}
+
+.dashboard-auth-shell .dashboard-auth-main {
+  width: min(1040px, calc(100% - 3rem));
+}
+.dashboard-auth-shell .dashboard-login-card {
+  border-color: #aebdae !important;
+  color: #10231a !important;
+  background: #fff !important;
+  box-shadow: 0 0.9rem 2.4rem rgba(31, 53, 40, 0.1) !important;
+}
+.dashboard-auth-shell .dashboard-login-card .form-header {
+  border-color: #d8ded5 !important;
+  color: #587064 !important;
+}
+.dashboard-auth-shell .dashboard-login-card .form-step,
+.dashboard-auth-shell .dashboard-login-card .field-group label {
+  color: #18794e !important;
+}
+.dashboard-auth-shell .dashboard-login-card .field-group label {
+  font-size: 0.9rem !important;
+}
+.dashboard-auth-shell .dashboard-login-card .field-group input {
+  border-color: #d8ded5 !important;
+  color: #10231a !important;
+  background: #f8faf6 !important;
+}
+.dashboard-auth-shell .dashboard-login-card .field-group input:focus {
+  border-color: #18794e !important;
+  background: #fff !important;
+  box-shadow: 0 0 0 3px rgba(24, 121, 78, 0.12) !important;
+}
+.dashboard-auth-shell .dashboard-login-card .submit-button {
+  color: #fff !important;
+  background: #18794e !important;
+}
+.dashboard-auth-shell .dashboard-login-card .submit-button:hover:not(:disabled) {
+  background: #0e5b3a !important;
+}
+.dashboard-auth-shell .dashboard-login-card .login-note {
+  color: #587064 !important;
+}
+.dashboard-auth-shell .dashboard-login-card .login-note svg {
+  color: #18794e !important;
+}
