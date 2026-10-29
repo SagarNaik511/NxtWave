@@ -88,6 +88,7 @@ button, input, select { font-family: inherit; }
 .dashboard-shell .campaign-settings-panel { border-color: rgba(217, 247, 229, 0.2) !important; background: #11271c !important; color: #f2fff7 !important; }
 .dashboard-shell .goal-panel { background: linear-gradient(110deg, #185434, #11271c) !important; }
 .dashboard-shell .reporting-controls h2,
+.dashboard-shell .reporting-banner strong,
 .dashboard-shell .selected-summary h2,
 .dashboard-shell .goal-heading h2,
 .dashboard-shell .panel-heading h2,
@@ -122,3 +123,99 @@ button, input, select { font-family: inherit; }
 .dashboard-shell .leaderboard-panel code { color: #f2fff7 !important; }
 .dashboard-shell .dashboard-inline-success { color: #8bffb5 !important; }
 .dashboard-shell .dashboard-inline-error { color: #ffb8b8 !important; }
+
+/* The sign-in route is part of the same authenticated workspace. Keep it dark,
+   readable, and width-safe instead of allowing the legacy light entry screen
+   rules above to change its contrast or overflow on narrow viewports. */
+.dashboard-auth-shell {
+  min-height: 100vh;
+  color: #f2fff7 !important;
+  background: #10251b !important;
+}
+.dashboard-auth-shell .dashboard-header {
+  border-color: rgba(217, 247, 229, 0.18) !important;
+}
+.dashboard-auth-shell .dashboard-brand,
+.dashboard-auth-shell .dashboard-brand small {
+  color: #f2fff7 !important;
+}
+.dashboard-auth-shell .dashboard-brand small,
+.dashboard-auth-shell .dashboard-back-public {
+  color: #b5c9bd !important;
+}
+.dashboard-auth-shell .dashboard-back-public {
+  border-color: rgba(217, 247, 229, 0.24) !important;
+  background: #11271c !important;
+}
+.dashboard-auth-shell .dashboard-back-public:hover {
+  border-color: #8bffb5 !important;
+  color: #f2fff7 !important;
+}
+.dashboard-auth-main {
+  box-sizing: border-box;
+  width: min(1040px, calc(100% - 3rem));
+}
+.dashboard-auth-copy h1 {
+  color: #f2fff7 !important;
+}
+.dashboard-auth-copy p {
+  color: #b5c9bd !important;
+}
+.dashboard-login-card {
+  box-sizing: border-box;
+  min-width: 0;
+  width: 100%;
+  border-color: rgba(217, 247, 229, 0.2) !important;
+  color: #f2fff7 !important;
+  background: #11271c !important;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.34) !important;
+}
+.dashboard-login-card .form-header {
+  border-color: rgba(217, 247, 229, 0.18) !important;
+  color: #b5c9bd !important;
+}
+.dashboard-login-card .form-step,
+.dashboard-login-card .field-group label {
+  color: #8bffb5 !important;
+}
+.dashboard-login-card .field-group label {
+  font-size: 0.9rem !important;
+}
+.dashboard-login-card .field-group input {
+  box-sizing: border-box;
+  width: 100%;
+  border-color: rgba(217, 247, 229, 0.24) !important;
+  color: #f2fff7 !important;
+  background: #0b1b12 !important;
+}
+.dashboard-login-card .field-group input:focus {
+  border-color: #8bffb5 !important;
+  background: #0b1b12 !important;
+  box-shadow: 0 0 0 3px rgba(139, 255, 181, 0.14) !important;
+}
+.dashboard-login-card .submit-button {
+  width: 100%;
+  color: #06100a !important;
+  background: #8bffb5 !important;
+}
+.dashboard-login-card .submit-button:hover:not(:disabled) {
+  background: #b5ffd0 !important;
+}
+.dashboard-login-card .login-note {
+  color: #b5c9bd !important;
+}
+.dashboard-login-card .login-note svg {
+  color: #8bffb5 !important;
+}
+
+@media (max-width: 980px) {
+  .dashboard-auth-main {
+    width: min(100% - 2rem, 700px);
+  }
+}
+
+@media (max-width: 760px) {
+  .dashboard-auth-main {
+    width: min(100% - 2rem, 620px);
+  }
+}
