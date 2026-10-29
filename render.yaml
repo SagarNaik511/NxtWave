@@ -27,7 +27,7 @@ services:
       - key: DJANGO_CORS_ALLOWED_ORIGINS
         fromService:
           type: web
-          name: ai-sprint-frontend
+          name: ai-sprint-workshop
           envVarKey: RENDER_EXTERNAL_URL
       - key: DJANGO_TIME_ZONE
         value: Asia/Kolkata
@@ -36,7 +36,7 @@ services:
       - key: DJANGO_CSRF_TRUSTED_ORIGINS
         fromService:
           type: web
-          name: ai-sprint-frontend
+          name: ai-sprint-workshop
           envVarKey: RENDER_EXTERNAL_URL
       - key: CAMPAIGN_NAME
         value: AI Sprint - Build Your First AI Project in 60 Minutes
@@ -50,7 +50,7 @@ services:
         value: Asia/Kolkata
 
   - type: web
-    name: ai-sprint-frontend
+    name: ai-sprint-workshop
     runtime: static
     rootDir: frontend
     buildCommand: npm ci --include=dev && npm run build
