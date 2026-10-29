@@ -527,8 +527,15 @@ button, input, select { font-family: inherit; }
 .registration-intro > h1 {
   margin-top: 0;
 }
+.registration-page {
+  align-items: start;
+  padding-top: 4rem;
+}
 
 @media (max-width: 760px) {
+  .registration-page {
+    padding-top: 2.75rem;
+  }
   .registration-intro > .back-link {
     margin-bottom: 1.25rem;
   }
