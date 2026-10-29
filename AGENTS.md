@@ -194,5 +194,12 @@ The project is tracked in Git on the `main` branch. PostgreSQL/cloud deployment 
 ## Professional coding visual direction
 
 - The active visual layer is now `frontend/src/styles/professional-theme.css`, imported after `global.css`.
-- Public, registration, and dashboard surfaces use a professional black/graphite and green system with larger type, stronger contrast, readable body copy, code-terminal styling, and a small CSS-built coding mascot in the home hero.
+- Public pages use a warm-neutral education/SaaS presentation with deep forest-green actions, readable type, restrained borders, modest shadows, and generous whitespace. Registration keeps the same visual language, while the authenticated dashboard uses calm deep-green surfaces for analytical focus.
+- The home hero includes a compact code-terminal illustration and a small CSS-built coding mascot; these are decorative only and do not represent live metrics.
 - The hero code illustration is decorative only. It does not fabricate workshop metrics or change any product behavior.
+
+## Professional UI/UX redesign
+
+- Navigation now uses clear conversion-oriented labels (`ABOUT`, `WHAT YOU'LL LEARN`, `HOW IT WORKS`, `FAQ`) and the primary action is `REGISTER FOR FREE`.
+- Existing routes, API calls, authentication, referral attribution, reporting periods, campaign settings, leaderboard behavior, and aggregate CSV export remain unchanged.
+- The redesign was verified with the frontend TypeScript check, production build, and `git diff --check`. Browser viewport QA remains a manual handoff because no browser automation is configured in this workspace.

@@ -39,16 +39,16 @@ export function PublicLayout() {
         </button>
         <div className={`header-navigation ${isMenuOpen ? 'is-open' : ''}`}>
           <nav id="primary-navigation" className="primary-navigation" aria-label="Primary navigation">
-            <Link to={anchor('#about')} onClick={closeMenu}>01 HOME</Link>
-            <Link to={anchor('#workshop')} onClick={closeMenu}>02 WORKSHOP</Link>
-            <Link to={anchor('#build')} onClick={closeMenu}>03 BUILD</Link>
-            <Link to={anchor('#faq')} onClick={closeMenu}>04 FAQ</Link>
+            <Link to={anchor('#about')} onClick={closeMenu}>ABOUT</Link>
+            <Link to={anchor('#workshop')} onClick={closeMenu}>WHAT YOU&apos;LL LEARN</Link>
+            <Link to={anchor('#build')} onClick={closeMenu}>HOW IT WORKS</Link>
+            <Link to={anchor('#faq')} onClick={closeMenu}>FAQ</Link>
           </nav>
           <Link className="header-admin-link" to="/dashboard" onClick={closeMenu}>
             OPS DASHBOARD
           </Link>
           <Link className="header-cta" to="/register" onClick={closeMenu}>
-            START SPRINT <ArrowUpRight size={16} aria-hidden="true" />
+            REGISTER FOR FREE <ArrowUpRight size={16} aria-hidden="true" />
           </Link>
         </div>
       </header>
