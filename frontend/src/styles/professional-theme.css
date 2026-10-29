@@ -511,3 +511,28 @@ button, input, select { font-family: inherit; }
 .dashboard-auth-shell .dashboard-login-card .login-note svg {
   color: #18794e !important;
 }
+
+/* Registration intro hierarchy: keep navigation and the page label on
+   separate rows so they never collide at intermediate widths. */
+.registration-intro > .back-link {
+  display: flex;
+  width: max-content;
+  margin-bottom: 1.5rem;
+}
+.registration-intro > .eyebrow {
+  display: flex;
+  width: max-content;
+  margin-bottom: 2.1rem;
+}
+.registration-intro > h1 {
+  margin-top: 0;
+}
+
+@media (max-width: 760px) {
+  .registration-intro > .back-link {
+    margin-bottom: 1.25rem;
+  }
+  .registration-intro > .eyebrow {
+    margin-bottom: 1.6rem;
+  }
+}
