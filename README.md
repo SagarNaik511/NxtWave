@@ -70,15 +70,16 @@ The current token authentication keeps tokens in frontend memory and rotates the
 
 ## Deploy to Render
 
-The repository includes `render.yaml`, which defines a Render Postgres database, a Django web service, and a Render static site for the Vite frontend. Render Blueprints use this file to provision the connected resources together. The backend automatically accepts Render's `RENDER_EXTERNAL_HOSTNAME`; custom domains must still be added to `DJANGO_ALLOWED_HOSTS`, `DJANGO_CORS_ALLOWED_ORIGINS`, and `DJANGO_CSRF_TRUSTED_ORIGINS`.
+The repository includes `render.yaml`, which defines a Django web service and a Render static site for the Vite frontend. The Blueprint intentionally reuses an existing Render PostgreSQL database through a prompted `DATABASE_URL`, because a Render workspace can have only one active free-tier database. The backend automatically accepts Render's `RENDER_EXTERNAL_HOSTNAME`; custom domains must still be added to `DJANGO_ALLOWED_HOSTS`, `DJANGO_CORS_ALLOWED_ORIGINS`, and `DJANGO_CSRF_TRUSTED_ORIGINS`.
 
 ### First deployment from the beginning
 
 1. Push this repository to GitHub, GitLab, or Bitbucket. The current project is published at `https://github.com/SagarNaik511/NxtWave` on the `main` branch; Render deploys from a connected Git repository.
 2. In Render, choose **New → Blueprint**, connect the repository, and select the branch containing `render.yaml`.
 3. The Blueprint now wires `VITE_API_BASE_URL` to the API service URL automatically. If the frontend service was created before this wiring was added, set `VITE_API_BASE_URL` manually to the public backend URL followed by `/api`, for example `https://ai-sprint-api.onrender.com/api`. The frontend also normalizes a backend URL without `/api`, but using the explicit `/api` value is recommended.
-4. Apply the Blueprint. The backend installs Python dependencies, collects Django static files, and applies migrations; the service starts with Gunicorn and exposes `/api/health/` as its health check. The frontend installs its locked dependencies including Vite's build dependencies, uses Node `24.18.0`, builds from `frontend/`, and rewrites client-side routes to `index.html`.
-5. Create the administrator. On a paid Render web service, use its Render Shell:
+4. When Render asks for `DATABASE_URL`, open your existing Render PostgreSQL database, copy its **Internal Database URL**, and paste it into the Blueprint field. Use the internal URL, not the external URL. This avoids trying to create a second free-tier database.
+5. Apply the Blueprint. The backend installs Python dependencies, collects Django static files, and applies migrations; the service starts with Gunicorn and exposes `/api/health/` as its health check. The frontend installs its locked dependencies including Vite's build dependencies, uses Node `24.18.0`, builds from `frontend/`, and rewrites client-side routes to `index.html`.
+6. Create the administrator. On a paid Render web service, use its Render Shell:
 
    ```bash
    python manage.py createsuperuser
@@ -86,11 +87,11 @@ The repository includes `render.yaml`, which defines a Render Postgres database,
 
    Free web services do not provide Render Shell or one-off jobs. For a free demo, copy the database's external connection string into a temporary local `DATABASE_URL`, set the production Django variables in your local terminal, and run `backend/.venv/Scripts/python.exe backend/manage.py createsuperuser`; never commit that URL or password. Then remove the temporary variables.
 
-6. Open the frontend's `onrender.com` URL, test registration, then visit `/dashboard` and sign in with that staff account.
+7. Open the frontend's `onrender.com` URL, test registration, then visit `/dashboard` and sign in with that staff account.
 
 ### Values configured automatically
 
-The Blueprint supplies `DATABASE_URL` from the Render database, generates `DJANGO_SECRET_KEY`, derives the API allowed host from `RENDER_EXTERNAL_HOSTNAME`, derives CORS and CSRF origins from the frontend `RENDER_EXTERNAL_URL`, and sets the campaign defaults. Do not put database credentials, Django secrets, or administrator passwords in `VITE_*` variables.
+The Blueprint prompts for `DATABASE_URL`, generates `DJANGO_SECRET_KEY`, derives the API allowed host from `RENDER_EXTERNAL_HOSTNAME`, derives CORS and CSRF origins from the frontend `RENDER_EXTERNAL_URL`, and sets the campaign defaults. Do not put database credentials, Django secrets, or administrator passwords in `VITE_*` variables.
 
 If you deploy an existing Render service instead of creating the Blueprint, set the frontend service variable `VITE_API_BASE_URL` manually to the API URL plus `/api`, such as `https://ai-sprint-api.onrender.com/api`, then redeploy the frontend. For a custom domain, set the API variables to the exact deployed values:
 
