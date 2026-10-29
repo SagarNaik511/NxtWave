@@ -240,6 +240,11 @@ button, input, select { font-family: inherit; }
   width: max-content;
   margin-right: auto !important;
   margin-left: auto !important;
+  color: #10231a !important;
+  text-shadow: 0 0.16rem 0 rgba(16, 35, 26, 0.16);
+}
+.cloudwave-copy h1 span:nth-child(2) {
+  color: #0e5b3a !important;
 }
 .cloudwave-copy > p {
   max-width: 620px;
